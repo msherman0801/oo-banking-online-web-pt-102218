@@ -12,6 +12,7 @@ class Transfer
   end
   
   def valid?
+<<<<<<< HEAD
     @sender.valid? && @receiver.valid?
   end 
   
@@ -33,4 +34,24 @@ class Transfer
       @status = "reversed"
     end
   end
+=======
+    if @sender.valid? && @receiver.valid?
+      true 
+    else 
+      false 
+    end 
+  end 
+  
+  def execute_transaction
+    if self.valid? && @status == "pending"
+      binding.pry
+      @receiver.balance += @amount
+      @sender.balance -= @amount
+      @status = "complete"
+    else 
+      "Transaction rejected. Please check your balance."
+    end 
+  end
+  
+>>>>>>> 5402fb55badb889f0c30c594b0ab08205f2e6e3a
 end
